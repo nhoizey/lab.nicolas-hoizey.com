@@ -3,6 +3,11 @@
 	<title>Jennyfer</title>
 	<script src="masonry.pkgd.min.js"></script>
 	<style>
+	body {
+		background-color: #fff;
+		color: #333;
+	}
+
 	#container {
 		width: 900px;
 		margin: 0 auto;
