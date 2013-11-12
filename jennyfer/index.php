@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Jennyfer</title>
-	<script src="js/vendor/jquery-2.0.3.js"></script>
+	<script src="js/vendor/jquery-2.0.3.min.js"></script>
 	<script src="js/vendor/masonry.pkgd.min.js"></script>
 	<style>
 	body {
