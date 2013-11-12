@@ -1,6 +1,8 @@
 <html>
 <head>
 	<title>Jennyfer</title>
+	<script src="js/vendor/jquery-2.0.3.js"></script>
+	<script src="js/vendor/masonry.pkgd.min.js"></script>
 	<style>
 	body {
 		background-color: #fff;
@@ -60,8 +62,6 @@
 </div>
 <p class="next"><a href="?start=<?php echo $start + 1; ?>">Voir les produits suivants</a></p>
 
-<script src="js/vendor/jquery-2.0.3.js"></script>
-<script src="js/vendor/masonry.pkgd.min.js"></script>
 <script>
 $('#container').masonry({
   itemSelector: '.item'
