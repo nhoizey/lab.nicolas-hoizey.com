@@ -1,8 +1,6 @@
 <html>
 <head>
 	<title>Jennyfer</title>
-	<script src="jquery-2.0.3.js"></script>
-	<script src="masonry.pkgd.min.js"></script>
 	<style>
 	body {
 		background-color: #fff;
@@ -62,6 +60,8 @@
 </div>
 <p class="next"><a href="?start=<?php echo $start + 1; ?>">Voir les produits suivants</a></p>
 
+<script src="js/vendor/jquery-2.0.3.js"></script>
+<script src="js/vendor/masonry.pkgd.min.js"></script>
 <script>
 $('#container').masonry({
   itemSelector: '.item'
@@ -79,6 +79,15 @@ $('.next a').on('click', function (event) {
 	  $this.attr('href', '?start=' + (index + 1));
 	});
 });
+
+// Google Univeral Analytics
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1655999-7', 'gasteroprod.com');
+ga('send', 'pageview');
 </script>
 </body>
 </html>

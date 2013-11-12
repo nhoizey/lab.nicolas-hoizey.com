@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(../fonts/open-sans-light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/open-sans-bold.woff) format('woff');
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	max-width: 35em;
+	padding: 1em;
+	margin: auto;
+	text-align: center;
+	font-family: 'Open Sans', 'Myriad Pro', 'Helvetica Neue', sans-serif;
+	font-weight: 300;
+	color: #333;
+	background-color: #fff;
+}
+
+a {
+	color: slategray;
+}
+
+// http://lamb.cc/typograph/
+body { font-size:100%; line-height:1.25; }
+h1, h2, h3 { margin:0 auto; }
+h1 { font-size:2em; padding:1.25em 0; }
+h2 { font-size:1.61538em; padding:1.30946em 0; }
+h3 { font-size:1.23077em; padding:1.40645em 0; }
+
+h1, h2, h3 {
+	font-weight: 300;
+}
+
+output {
+	display: block;
+	margin: 0 auto;
+	padding: 1em;
+	width: 90%;
+	line-height: 1;
+}
+
+	output p {
+		margin: 0;
+		padding: 0;
+	}
+
+#result {
+	font-size: 4em;
+	font-weight: 300;
+}
+
+	#result span {
+		font-weight: 700;
+	}
+
+#feedback.ok {
+	color: #339933;
+}
+
+body > footer {
+	padding-top: 1em;
+	border-top: 1px solid #eee;
+	margin-top: 2em;
+}
+
