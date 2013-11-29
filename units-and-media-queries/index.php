@@ -91,17 +91,17 @@ var dummy = document.createElement('div');
 dummy.innerHTML = '<p>dummy text</p>';
 dummy.setAttribute('style', 'height: 4em');
 document.body.insertBefore(dummy, document.body.childNodes[0]);
-var rfs = Math.round(parseInt(dummy.offsetHeight, 10) / 4 * 100) / 100;
+var rfs = Math.round(parseInt(dummy.offsetHeight, 10) / 4 * 100<?php echo ($root != 'default' && $size == '62.5%' ? ' * 1.6' : ''); ?>) / 100;
 dummy.parentNode.removeChild(dummy);
 </script>
 
 	<h1>Experiments with size units and Media Queries</h1>
-	<p>Currently showing Media Queries in
+	<p>Currently showing <strong>Media Queries in
 		<?php
 		if ($root != 'default') {
-			echo '<strong>'.$mqs[$mq].'</strong> with <strong>'.$roots[$root].'</strong> font-size set to <strong>'.$sizes[$size].'</strong>';
+			echo $mqs[$mq].'</strong> with <strong>'.$roots[$root].' font-size set to '.$sizes[$size].'</strong>. <script>document.write("Your current <strong>browser default font-size is "+rfs+"px</strong>");</script>';
 		} else {
-			echo '<strong>'.$mqs[$mq].'</strong> on <strong>browser default font-size</strong><script>document.write(" which is <strong>"+rfs+"px</strong>");</script>';
+			echo $mqs[$mq].'</strong> on <strong>browser default font-size</strong><script>document.write(" which is <strong>"+rfs+"px</strong>");</script>';
 		}
 		?>
 	</p>
