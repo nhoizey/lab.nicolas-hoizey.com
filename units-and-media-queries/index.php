@@ -15,74 +15,76 @@ $mq = 'default';
 if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
 	$mq = $_GET['mq'];
 }
-?>
+?><!DOCTYPE HTML>
 <html>
 
 <head>
-<title>Experiments with size units and Media Queries</title>
-<style>
-<?php
-if ($root != 'default') {
-	echo $root.' { font-size: '.$size.'; }';
-	if ($size == '62.5%') {
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Experiments with size units and Media Queries</title>
+	<style>
+	<?php
+	if ($root != 'default') {
+		echo $root.' { font-size: '.$size.'; }';
+		if ($size == '62.5%') {
+			?>
+			h1 { font-size: 3.2em; }
+			h2 { font-size: 2.4em; }
+			p, .box { font-size: 1.6em; }
+			<?php
+		}
+	}
+	?>
+	.box {
+		background: #fc3;
+		margin: 1em 0;
+	}
+
+	.px { width: 16px; }
+	.px * { display: none; }
+
+	<?php
+	for ($i = 1; $i <= 50; $i++) {
 		?>
-		h1 { font-size: 3.2em; }
-		h2 { font-size: 2.4em; }
-		p, .box { font-size: 1.6em; }
+		@media all and (min-width: <?php echo ($i + 2) * 16; ?>px) {
+			.px { width: <?php echo $i * 16; ?>px; }
+			.px .px<?php echo ($i - 1); ?> { display: none; }
+			.px .px<?php echo $i; ?> { display: inline; }
+		}
 		<?php
 	}
-}
-?>
-.box {
-	background: #fc3;
-	margin: 1em 0;
-}
-
-.px { width: 16px; }
-.px * { display: none; }
-
-<?php
-for ($i = 1; $i <= 50; $i++) {
 	?>
-	@media all and (min-width: <?php echo ($i + 2) * 16; ?>px) {
-		.px { width: <?php echo $i * 16; ?>px; }
-		.px .px<?php echo ($i - 1); ?> { display: none; }
-		.px .px<?php echo $i; ?> { display: inline; }
-	}
+
+	.em { width: 1em; }
+	.em * { display: none; }
+
 	<?php
-}
-?>
-
-.em { width: 1em; }
-.em * { display: none; }
-
-<?php
-for ($i = 1; $i <= 50; $i++) {
+	for ($i = 1; $i <= 50; $i++) {
+		?>
+		@media all and (min-width: <?php echo ($i + 2); ?>em) {
+			.em { width: <?php echo $i; ?>em; }
+			.em .em<?php echo ($i - 1); ?> { display: none; }
+			.em .em<?php echo $i; ?> { display: inline; }
+		}
+		<?php
+	}
 	?>
-	@media all and (min-width: <?php echo ($i + 2); ?>em) {
-		.em { width: <?php echo $i; ?>em; }
-		.em .em<?php echo ($i - 1); ?> { display: none; }
-		.em .em<?php echo $i; ?> { display: inline; }
-	}
+
+	.rem { width: 1rem; }
+	.rem * { display: none; }
+
 	<?php
-}
-?>
-
-.rem { width: 1rem; }
-.rem * { display: none; }
-
-<?php
-for ($i = 1; $i <= 50; $i++) {
+	for ($i = 1; $i <= 50; $i++) {
+		?>
+		@media all and (min-width: <?php echo ($i + 2); ?>rem) {
+			.rem { width: <?php echo $i; ?>rem; }
+			.rem .rem<?php echo ($i - 1); ?> { display: none; }
+			.rem .rem<?php echo $i; ?> { display: inline; }
+		}
+		<?php
+	}
 	?>
-	@media all and (min-width: <?php echo ($i + 2); ?>rem) {
-		.rem { width: <?php echo $i; ?>rem; }
-		.rem .rem<?php echo ($i - 1); ?> { display: none; }
-		.rem .rem<?php echo $i; ?> { display: inline; }
-	}
-	<?php
-}
-?>
-</style>
+	</style>
 </head>
 
 <body>
