@@ -157,6 +157,7 @@ dummy.parentNode.removeChild(dummy);
 		}
 		?>
 	</div>
+	<p>Resize your browser or use Firefox's responsive view in dev tools to see Media Queries effect.</p>
 </body>
 
 </html>
