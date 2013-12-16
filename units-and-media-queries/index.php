@@ -93,6 +93,7 @@ dummy.parentNode.removeChild(dummy);
 </script>
 
 	<h1>Experiments with size units and Media Queries</h1>
+	<p>Use Firefox's responsive view in devtools — or resize your browser window — to see Media Queries effect.<br />Change your root font size settings to see the impact of em/rem units.</p>
 	<p>Currently showing <strong>Media Queries in
 		<?php
 		if ($root != 'default') {
@@ -137,7 +138,6 @@ dummy.parentNode.removeChild(dummy);
 	<div class="box em">This box has a width of <span class="small"><?php echo $smallBoxSizes['em']; ?></span><span class="large"><?php echo $largeBoxSizes['em']; ?></span></div>
 	<div class="box rem">This box has a width of <span class="small"><?php echo $smallBoxSizes['rem']; ?></span><span class="large"><?php echo $largeBoxSizes['rem']; ?></span></div>
 	<div class="box px">This box has a width of <span class="small"><?php echo $smallBoxSizes['px']; ?></span><span class="large"><?php echo $largeBoxSizes['px']; ?></span></div>
-	<p>Resize your browser — or use Firefox's responsive view in dev tools — to see Media Queries effect.<br />Change your root font size settings to see the impact of em/rem units.</p>
 	<script>
 	// Google Univeral Analytics
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
