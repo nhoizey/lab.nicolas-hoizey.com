@@ -1,7 +1,9 @@
 <?php
 $roots = array('html' => 'html', 'body' => 'body', 'default' => 'browser default size');
-$sizes = array('62.5%' => '62.5%', '100%' => '100%');
-$mqs = array('em' => 'em', 'rem' => 'rem', 'px' => 'px');
+$sizes = array('62.5%' => '62.5%', '100%' => '100%', 'default' => 'browser default size');
+$mqs = array('em' => '40em', 'rem' => '40rem', 'px' => '640px');
+$smallBoxSizes = array('em' => '20em', 'rem' => '20rem', 'px' => '320px');
+$largeBoxSizes = array('em' => '30em', 'rem' => '30rem', 'px' => '480px');
 
 $root = 'default';
 if (isset($_GET['root']) && in_array($_GET['root'], $roots)) {
@@ -11,7 +13,7 @@ $size = 'default';
 if (isset($_GET['size']) && in_array($_GET['size'], $sizes)) {
 	$size = $_GET['size'];
 }
-$mq = 'default';
+$mq = 'em';
 if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
 	$mq = $_GET['mq'];
 }
@@ -23,10 +25,15 @@ if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Experiments with size units and Media Queries</title>
 	<style>
+	body {
+		font-family: "Avenir Next", Avenir, sans-serif;
+	}
 	<?php
-	if ($root != 'default') {
-		echo $root.' { font-size: '.$size.'; }';
-		if ($size == '62.5%') {
+	if ('default' !== $root) {
+		if ('default' !== $size) {
+			echo $root.' { font-size: '.$size.'; }';
+		}
+		if ('62.5%' === $size) {
 			?>
 			h1 { font-size: 3.2em; }
 			h2 { font-size: 2.4em; }
@@ -40,50 +47,20 @@ if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
 		margin: 1em 0;
 	}
 
-	.px { width: 16px; }
-	.px * { display: none; }
+	.em { width: <?php echo $smallBoxSizes['em']; ?>; }
+	.rem { width: <?php echo $smallBoxSizes['rem']; ?>; }
+	.px { width: <?php echo $smallBoxSizes['px']; ?>; }
 
-	<?php
-	for ($i = 1; $i <= 50; $i++) {
-		?>
-		@media all and (min-width: <?php echo ($i + 2) * 16; ?>px) {
-			.px { width: <?php echo $i * 16; ?>px; }
-			.px .px<?php echo ($i - 1); ?> { display: none; }
-			.px .px<?php echo $i; ?> { display: inline; }
-		}
-		<?php
+	.large { display: none; }
+
+	@media screen and (min-width: <?php echo $mqs[$mq]; ?>) {
+		.em { width: <?php echo $largeBoxSizes['em']; ?>; }
+		.rem { width: <?php echo $largeBoxSizes['rem']; ?>; }
+		.px { width: <?php echo $largeBoxSizes['px']; ?>; }
+
+		.small { display: none; }
+		.large { display: inline; }
 	}
-	?>
-
-	.em { width: 1em; }
-	.em * { display: none; }
-
-	<?php
-	for ($i = 1; $i <= 50; $i++) {
-		?>
-		@media all and (min-width: <?php echo ($i + 2); ?>em) {
-			.em { width: <?php echo $i; ?>em; }
-			.em .em<?php echo ($i - 1); ?> { display: none; }
-			.em .em<?php echo $i; ?> { display: inline; }
-		}
-		<?php
-	}
-	?>
-
-	.rem { width: 1rem; }
-	.rem * { display: none; }
-
-	<?php
-	for ($i = 1; $i <= 50; $i++) {
-		?>
-		@media all and (min-width: <?php echo ($i + 2); ?>rem) {
-			.rem { width: <?php echo $i; ?>rem; }
-			.rem .rem<?php echo ($i - 1); ?> { display: none; }
-			.rem .rem<?php echo $i; ?> { display: inline; }
-		}
-		<?php
-	}
-	?>
 	</style>
 </head>
 
@@ -108,7 +85,7 @@ dummy.parentNode.removeChild(dummy);
 		?>
 	</p>
 	<form method="get">
-		<p>Now, show Media Queries in
+		<p>Now, set a min-width Media Query at
 			<select name="mq">
 				<?php
 				foreach($mqs as $mqValue => $mqLabel) {
@@ -137,28 +114,10 @@ dummy.parentNode.removeChild(dummy);
 			<input type="submit" value="apply!" />
 		</p>
 	</form>
-	<div class="box px">This box has a width of
-		<?php
-		for ($i = 1; $i <= 50; $i++) {
-			echo '<span class="px'.$i.'">'.($i * 16).'px</span>';
-		}
-		?>
-		<span class="large">800px</span><span class="medium">560px</span><span class="small">320px</span>
-	</div>
-	<div class="box em">This box has a width of
-		<?php
-		for ($i = 1; $i <= 50; $i++) {
-			echo '<span class="em'.$i.'">'.$i.'em</span>';
-		}
-		?>
-	</div>
-	<div class="box rem">This box has a width of
-		<?php
-		for ($i = 1; $i <= 50; $i++) {
-			echo '<span class="rem'.$i.'">'.$i.'rem</span>';
-		}
-		?>
-	</div>
+	<p>Current Media Query applied: <span class="small">smaller</span><span class="large">larger</span> than <?php echo $mq; ?></p>
+	<div class="box em">This box has a width of <span class="small"><?php echo $smallBoxSizes['em']; ?></span><span class="large"><?php echo $largeBoxSizes['em']; ?></span></div>
+	<div class="box rem">This box has a width of <span class="small"><?php echo $smallBoxSizes['rem']; ?></span><span class="large"><?php echo $largeBoxSizes['rem']; ?></span></div>
+	<div class="box px">This box has a width of <span class="small"><?php echo $smallBoxSizes['px']; ?></span><span class="large"><?php echo $largeBoxSizes['px']; ?></span></div>
 	<p>Resize your browser or use Firefox's responsive view in dev tools to see Media Queries effect.</p>
 	<script>
 	// Google Univeral Analytics
