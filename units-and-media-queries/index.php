@@ -6,15 +6,15 @@ $smallBoxSizes = array('em' => '20em', 'rem' => '20rem', 'px' => '320px');
 $largeBoxSizes = array('em' => '30em', 'rem' => '30rem', 'px' => '480px');
 
 $root = 'default';
-if (isset($_GET['root']) && in_array($_GET['root'], $roots)) {
+if (isset($_GET['root']) && isset($roots[$_GET['root']])) {
 	$root = $_GET['root'];
 }
 $size = 'default';
-if (isset($_GET['size']) && in_array($_GET['size'], $sizes)) {
+if (isset($_GET['size']) && isset($sizes[$_GET['size']])) {
 	$size = $_GET['size'];
 }
 $mq = 'em';
-if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
+if (isset($_GET['mq']) && isset($mqs[$_GET['mq']])) {
 	$mq = $_GET['mq'];
 }
 ?><!DOCTYPE HTML>
@@ -25,9 +25,21 @@ if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Experiments with size units and Media Queries</title>
 	<style>
+	* {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
 	body {
 		font-family: "Avenir Next", Avenir, sans-serif;
+		margin: 0;
+		padding: 0;
 	}
+
+	h1, h2, p {
+		margin: 20px;
+	}
+
 	<?php
 	if ('default' !== $root) {
 		if ('default' !== $size) {
@@ -43,8 +55,14 @@ if (isset($_GET['mq']) && in_array($_GET['mq'], $mqs)) {
 	}
 	?>
 	.box {
+		margin: 20px 0;
+		padding: 5px 10px;
 		background: #fc3;
-		margin: 1em 0;
+	}
+
+	.reference {
+		width: <?php echo $mqs[$mq]; ?>;
+		background: #cc9;
 	}
 
 	.em { width: <?php echo $smallBoxSizes['em']; ?>; }
@@ -78,7 +96,7 @@ dummy.parentNode.removeChild(dummy);
 	<p>Currently showing <strong>Media Queries in
 		<?php
 		if ($root != 'default') {
-			echo $mqs[$mq].'</strong> with <strong>'.$roots[$root].' font-size set to '.$sizes[$size].'</strong>. <script>document.write("Your current <strong>browser default font-size is "+rfs+"px</strong>");</script>';
+			echo $mqs[$mq].'</strong> with <strong>'.$roots[$root].' font-size set to '.$sizes[$size].'</strong>. <script>document.write("<br />Your current <strong>browser default font-size is "+rfs+"px</strong>.");</script>';
 		} else {
 			echo $mqs[$mq].'</strong> on <strong>browser default font-size</strong><script>document.write(" which is <strong>"+rfs+"px</strong>");</script>';
 		}
@@ -114,11 +132,12 @@ dummy.parentNode.removeChild(dummy);
 			<input type="submit" value="apply!" />
 		</p>
 	</form>
-	<p>Current Media Query applied: <span class="small">smaller</span><span class="large">larger</span> than <?php echo $mq; ?></p>
+	<p>Current Media Query applied: <strong><span class="small">smaller</span><span class="large">larger</span></strong> than <?php echo $mqs[$mq]; ?></p>
+	<div class="box reference">This reference box has a width of <?php echo $mqs[$mq]; ?></div>
 	<div class="box em">This box has a width of <span class="small"><?php echo $smallBoxSizes['em']; ?></span><span class="large"><?php echo $largeBoxSizes['em']; ?></span></div>
 	<div class="box rem">This box has a width of <span class="small"><?php echo $smallBoxSizes['rem']; ?></span><span class="large"><?php echo $largeBoxSizes['rem']; ?></span></div>
 	<div class="box px">This box has a width of <span class="small"><?php echo $smallBoxSizes['px']; ?></span><span class="large"><?php echo $largeBoxSizes['px']; ?></span></div>
-	<p>Resize your browser or use Firefox's responsive view in dev tools to see Media Queries effect.</p>
+	<p>Resize your browser — or use Firefox's responsive view in dev tools — to see Media Queries effect.<br />Change your root font size settings to see the impact of em/rem units.</p>
 	<script>
 	// Google Univeral Analytics
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
