@@ -1,0 +1,38 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Imager.js - ex01</title>
+	<link rel="stylesheet" href="styles.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div id="page">
+		<header>
+			<h1>BBC News / Imager.js</h2>
+		</header>
+		<article>
+			<p>2 images should be shown:</p>
+			<div id="test1">
+				<div class="delayed-image-load" data-src="img/photo-escalator-{width}.jpg"></div>
+			</div>
+			<div id="test2">
+				<div class="delayed-image-load" data-src="img/photo-escalator-{width}.jpg"></div>
+			</div>
+			<p>Only the second one is shown because there is this in the CSS:</p>
+			<pre>
+#test2 .image-replace {
+	width: 100%;
+}
+			</pre>
+			<p>Why is that mandatory?</p>
+		</article>
+	</div>
+	<script src="Imager.min.js"></script>
+	<script>
+	new Imager({ availableWidths: [320, 480, 768] });
+	</script>
+</body>
+
+</html>

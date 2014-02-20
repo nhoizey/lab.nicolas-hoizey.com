@@ -1,0 +1,27 @@
+/* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 1em;
+	font-family: "Avenir Next", Verdana, sans-serif;
+}
+
+#page {
+	margin: 0 auto;
+	max-width: 30em;
+}
+
+article img {
+	max-width: 100%;
+	height: auto;
+}
+
+#test2 .image-replace {
+	width: 100%;
+}
+
