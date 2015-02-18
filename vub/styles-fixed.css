@@ -1,0 +1,40 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+.container {
+	position: absolute;
+	top: 3vmin;
+	bottom: 3vmin;
+	left: 3vmin;
+	right: 3vmin;
+	border: 1px solid green;
+}
+
+.element {
+	border: 1px solid red;
+	position: absolute;
+	height: 2em;
+	line-height: 2;
+	top: 3vmax;
+	left: 3vmax;
+	right: 3vmax;
+}
+
+.bottom {
+	display: none;
+}
+
+@media  all and (min-width: 20em) {
+	.element {
+		top: auto !important;
+		bottom: 3vmax;
+	}
+
+	.top {
+		display: none;
+	}
+
+	.bottom {
+		display: inline;
+	}
+}
