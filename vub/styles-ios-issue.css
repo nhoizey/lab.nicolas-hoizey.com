@@ -20,7 +20,7 @@ body {
 	top: 0;
 	left: 0;
 	width: 50vw;
-	height: 20vh;
+	height: 40vh;
 	border: 1px solid red;
 }
 
@@ -29,6 +29,6 @@ body {
 	bottom: 0;
 	right: 0;
 	width: 50vw;
-	height: 20vh;
+	height: 40vh;
 	border: 1px solid blue;
 }
