@@ -20,9 +20,21 @@ html { box-sizing: border-box; }
 	right: 3vmax;
 }
 
+.bottom {
+	display: none;
+}
+
 @media  all and (min-width: 20em) {
 	.element {
 		top: auto;
 		bottom: 3vmax;
+	}
+
+	.top {
+		display: none;
+	}
+
+	.bottom {
+		display: inline;
 	}
 }
