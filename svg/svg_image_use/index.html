@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Issue with multiple &lt;use&gt; of the same &lt;image&gt; in Opera - Miscellaneous tests - Nicolas Hoizey's playground</title>
+<link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+<div id="page">
+  <h1><a href="../../">Nicolas Hoizey's playground</a></h1>
+  <h2><a href="../">Miscellaneous tests</a></h2>
+  <h3>Issue with multiple &lt;use&gt; of the same &lt;image&gt; in Opera</h3>
+  <div class="fixed">
+    <p><strong>FIXED!</strong></p>
+    <p>As Erik "Mr SVG" Dahlström told me, this bug has already been fixed, and will maybe be included in Opera 12:
+    <blockquote class="twitter-tweet tw-align-center" data-in-reply-to="210047268454273027" lang="fr"><p>@<a href="https://twitter.com/nhoizey">nhoizey</a> @<a href="https://twitter.com/karlpro">karlpro</a> @<a href="https://twitter.com/JeremiePat">JeremiePat</a> confirmed, it's been fixed for quite some time in internal builds though, will hopefully make it into o12.</p>&mdash; Erik Dahlström (@erikdahlstrom) <a href="https://twitter.com/erikdahlstrom/status/210648707048275968" data-datetime="2012-06-07T08:25:40+00:00">Juin 7, 2012</a></blockquote>
+    <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </p>
+    <p>14/06/2012 update: Opera 12.0 is released, and includes the fix!</p>
+  </div>
+  <p><a href="test.html">This page</a> loads 3 SVG images in an inline SVG element with the <code>&lt;image&gt;</code> tag, and these images are used 3 times each with <code>&lt;use&gt;</code> tags.</p>
+  <p>In Firefox, the 9 images are shown.</p>
+  <p>In Chrome, no image is shown, but in Chrome enhanced with <a href="http://code.google.com/p/svgweb/">SVG Web</a> (with <a href="test_svgweb.html">this version of the test page</a>), the 9 images are shown.</p>
+  <p>In Opera, the last <code>&lt;use&gt;</code> of each <code>&lt;image&gt;</code> is the only one shown. Even with <a href="http://nhoizey.github.com/tests/svg_image_use/test.svg">a "raw" SVG</a> instead of a HTML5 page with inlined SVG.</p>
+  <p>Please comment in <a href="https://github.com/nhoizey/nhoizey.github.com/issues/1">this issue</a>!</p>
+  <table>
+    <caption>Tests in several browsers</caption>
+    <thead>
+      <tr>
+        <th scope="col">Browser</th>
+        <th scope="col">OS</th>
+        <th scope="col">OK / KO</th>
+        <th scope="col">Screenshot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Firefox 12.0</td>
+        <td>Mac OS X 10.7.4</td>
+        <td class="ok">OK</td>
+        <td><img src="screenshots/firefox.png" width="300" /></td>
+      </tr>
+      <tr>
+        <td>Chrome 21.0.1163.0 dev</td>
+        <td>Mac OS X 10.7.4</td>
+        <td class="ko">KO</td>
+        <td><img src="screenshots/chrome.png" width="300" /></td>
+      </tr>
+      <tr>
+        <td>Chrome 21.0.1163.0 dev with SVG Web</td>
+        <td>Mac OS X 10.7.4</td>
+        <td class="ok">OK</td>
+        <td><img src="screenshots/chrome-svgweb.png" width="300" /></td>
+      </tr>
+      <tr>
+        <td>Opera 11.64 &amp; 12.00 beta</td>
+        <td>Mac OS X 10.7.4</td>
+        <td class="ko">KO</td>
+        <td><img src="screenshots/opera.png" width="300" /></td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29037045-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
