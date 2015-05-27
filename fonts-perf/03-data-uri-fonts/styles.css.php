@@ -1,8 +1,3 @@
-<?php
-sleep(1);
-header('Content-type: text/css');
-?>
-
 body {
   font-family: "Source Sans Pro", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   font-weight: 300;

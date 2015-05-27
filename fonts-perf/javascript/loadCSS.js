@@ -33,7 +33,7 @@ function loadCSS( href, before, media, callback ){
 	ss.onloadcssdefined = function( cb ){
 		var defined;
 		for( var i = 0; i < sheets.length; i++ ){
-			if( sheets[ i ].href && sheets[ i ].href.indexOf( href.replace('../','') ) > -1 ){
+			if( sheets[ i ].href && sheets[ i ].href.indexOf( href.replace('../','').replace('./','') ) > -1 ){
 				defined = true;
 			}
 		}
@@ -46,7 +46,6 @@ function loadCSS( href, before, media, callback ){
 		}
 	};
 	ss.onloadcssdefined(function() {
-		console.log("there!");
 		ss.media = media || "all";
 	});
 	return ss;
