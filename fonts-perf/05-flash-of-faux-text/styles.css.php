@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Source Sans Pro";
+    font-family: "Source Sans Pro Normal";
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
@@ -8,21 +8,62 @@
          url("../fonts/ttf/SourceSansPro-Light.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Source Sans Pro Italic";
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    src: url("../fonts/woff2/SourceSansPro-LightIt.woff2") format("woff2"),
+         url("../fonts/woff/SourceSansPro-LightIt.woff") format("woff"),
+         url("../fonts/ttf/SourceSansPro-LightIt.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Source Sans Pro Bold";
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("../fonts/woff2/SourceSansPro-Semibold.woff2") format("woff2"),
+         url("../fonts/woff/SourceSansPro-Semibold.woff") format("woff"),
+         url("../fonts/ttf/SourceSansPro-Semibold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Source Sans Pro Bold Italic";
+    font-weight: 600;
+    font-style: italic;
+    font-stretch: normal;
+    src: url("../fonts/woff2/SourceSansPro-SemiboldIt.woff2") format("woff2"),
+         url("../fonts/woff/SourceSansPro-SemiboldIt.woff") format("woff"),
+         url("../fonts/ttf/SourceSansPro-SemiboldIt.ttf") format("truetype");
+}
+
 body {
   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   font-weight: 300;
   font-size: 1em;
 }
 
-.fonts-loaded body {
-  font-family: "Source Sans Pro", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-}
-
 h1, h2, strong {
   font-weight: 600;
 }
 
-.fallback {
-  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-  font-size: .8em;
+.fonts-loaded body {
+  font-family: "Source Sans Pro Normal", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.more-fonts-loaded em {
+  font-family: "Source Sans Pro Italic", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.more-fonts-loaded h1, .more-fonts-loaded h2, .more-fonts-loaded strong {
+  font-family: "Source Sans Pro Bold", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.more-fonts-loaded h1 em, .more-fonts-loaded h2 em, .more-fonts-loaded strong em, .more-fonts-loaded em strong {
+  font-family: "Source Sans Pro Bold Italic", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.fallback, .fallback * {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif !important;
 }

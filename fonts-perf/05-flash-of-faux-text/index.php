@@ -20,17 +20,46 @@ include './styles.css.php';
 
 <script>
 <?php
-include '../javascript/fontfaceobserver.standalone.js';
-include '../javascript/loadCSS.js';
+include '../javascript/fontfaceonload.js';
 ?>
-/* Load fonts */
-(function(w){
-  var observer = new w.FontFaceObserver("Source Sans Pro", { weight: 300 });
-  observer.check(null, 5000).then(function() {
-    w.document.documentElement.className += " fonts-loaded";
-    w.loadCSS('./more-fonts.css.php');
-  });
-}(this));
+
+(function( doc ) {
+	/* Load fonts */
+	FontFaceOnload( "Source Sans Pro Normal", {
+	  success: function() {
+	    var docEl = doc.documentElement;
+
+	    /* Stage 1 Complete
+	    /* FOFT engaged */
+	    docEl.className += " fonts-loaded";
+
+	    var counter = 0;
+	    var success = function() {
+	    	console.log('there');
+	      counter++;
+	      if( counter === 3 ) {
+	          // Stage 2 Complete
+	          // All Fonts Loaded
+	          docEl.className += " more-fonts-loaded";
+	      }
+	    };
+
+	    FontFaceOnload( "Source Sans Pro Bold", {
+	      weight: 600,
+	      success: success
+	    });
+	    FontFaceOnload( "Source Sans Pro Italic", {
+	      style: 'italic',
+	      success: success
+	    });
+	    FontFaceOnload( "Source Sans Pro Bold Italic", {
+	      weight: 600,
+	      style: 'italic',
+	      success: success
+	    });
+	  }
+	});
+})( document );
 </script>
 </body>
 
