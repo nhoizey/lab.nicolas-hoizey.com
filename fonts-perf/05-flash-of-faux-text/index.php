@@ -26,6 +26,9 @@ include '../javascript/fontfaceonload.js';
 (function( doc ) {
 	/* Load fonts */
 	FontFaceOnload( "Source Sans Pro Normal", {
+		error: function() {
+			console.log('didn\'t work… :-/');
+		},
 	  success: function() {
 	    var docEl = doc.documentElement;
 
@@ -35,7 +38,6 @@ include '../javascript/fontfaceonload.js';
 
 	    var counter = 0;
 	    var success = function() {
-	    	console.log('there');
 	      counter++;
 	      if( counter === 3 ) {
 	          // Stage 2 Complete
@@ -59,7 +61,7 @@ include '../javascript/fontfaceonload.js';
 	    });
 	  }
 	});
-})( document );
+})( window.document );
 </script>
 </body>
 
