@@ -9,11 +9,6 @@
 include './styles.css.php';
 ?>
 </style>
-<script>
-<?php
-include '../javascript/loadCSS.js';
-?>
-</script>
 </head>
 
 <body>
@@ -23,6 +18,10 @@ include '../javascript/loadCSS.js';
 <p>As defined in Filament Group's <a href="http://www.filamentgroup.com/lab/font-loading.html">How we use web fonts responsibly, or, avoiding a @font-face-palm</a> article.</p>
 <?php include '../starem-warsum.php'; ?>
 <script>
+<?php
+include '../javascript/loadCSS.js';
+?>
+
 /* https://github.com/filamentgroup/font-loading/blob/master/data-uris.html */
 var supportsWoff2 = (function( win ){
   if( !( "FontFace" in win ) ) {
@@ -35,13 +34,13 @@ var supportsWoff2 = (function( win ){
 
 /* load font (woff) */
 var ua = navigator.userAgent,
-		fontFileUrl = "../fonts/woff/data-uri-woff.css.php";
+		fontFileUrl = "../fonts/woff/base64-full.css.php";
 if( supportsWoff2 ) {
-  fontFileUrl = "../fonts/woff2/data-uri-woff2.css.php";
+  fontFileUrl = "../fonts/woff2/base64-full.css.php";
 	/* sometimes you have to do the bad thing.  ¯\_(ツ)_/¯
 	/* ttf if non-chrome android webkit browser */
 } else if( ua.indexOf( "Android" ) > -1 && ua.indexOf( "like Gecko" ) > -1 && ua.indexOf( "Chrome" ) === -1 ) {
-  fontFileUrl = "../fonts/ttf/data-uri-ttf.css.php";
+  fontFileUrl = "../fonts/ttf/fontface-full.css.php";
 }
 loadCSS(fontFileUrl);
 </script>
