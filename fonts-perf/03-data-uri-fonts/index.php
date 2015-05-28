@@ -20,6 +20,7 @@ include '../javascript/loadCSS.js';
 <h1>Fonts perf tests</h1>
 <?php include '../menu.php'; ?>
 <h2>Data URI fonts</h2>
+<p>As defined in Filament Group's <a href="http://www.filamentgroup.com/lab/font-loading.html">How we use web fonts responsibly, or, avoiding a @font-face-palm</a> article.</p>
 <?php include '../starem-warsum.php'; ?>
 <script>
 /* https://github.com/filamentgroup/font-loading/blob/master/data-uris.html */
