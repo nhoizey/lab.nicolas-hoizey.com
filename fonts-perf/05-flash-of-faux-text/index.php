@@ -26,6 +26,7 @@ include '../javascript/fontfaceonload.js';
 (function( doc ) {
 	/* Load fonts */
 	FontFaceOnload( "Source Sans Pro Normal", {
+		weight: '300',
 		error: function() {
 			console.log('didn\'t work… :-/');
 		},
@@ -51,6 +52,7 @@ include '../javascript/fontfaceonload.js';
 	      success: success
 	    });
 	    FontFaceOnload( "Source Sans Pro Italic", {
+				weight: '300',
 	      style: 'italic',
 	      success: success
 	    });
