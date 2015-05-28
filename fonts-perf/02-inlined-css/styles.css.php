@@ -50,5 +50,4 @@ h1, h2, strong {
 
 .fallback {
   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-  font-size: .8em;
 }
