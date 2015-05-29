@@ -1,11 +1,28 @@
+<IfModule mod_deflate.c>
+  AddOutputFilter DEFLATE text/css
+  AddOutputFilter DEFLATE text/html
+  AddOutputFilter DEFLATE text/plain
+
+  # JavaScript has various MIME types
+  AddOutputFilter DEFLATE application/javascript
+  AddOutputFilter DEFLATE application/x-javascript
+  AddOutputFilter DEFLATE text/ecmascript
+  AddOutputFilter DEFLATE text/javascript
+</IfModule>
+
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresDefault "access plus 0 second"
+  ExpiresDefault "access plus 1 year"
+  # Pages
+  ExpiresByType text/html  "access plus 15 minutes"
+  # Flux RSS
+  ExpiresByType text/xml  "access plus 120 minutes"
 </IfModule>
 
 <IfModule mod_headers.c>
-	Header unset ETag
-	Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
-	Header set Pragma "no-cache"
-	Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+  # Try removing etag headers (if it's coming from proxy for example)
+  Header unset ETag
 </IfModule>
+
+# Remove ETags
+FileETag None
