@@ -16,7 +16,7 @@ include './styles.css';
 <?php include '../menu.php'; ?>
 <h2>Flash of Faux Text Enhanced</h2>
 <p>Based on Zach Letherman's <a href="../05-flash-of-faux-text/">Flash of Faux Text</a>, but enhanced with <a href="../03-data-uri-fonts/">Data URI fonts</a> for variants, with no more aliases needed.</p>
-<?php include '../starem-warsum.php'; ?>
+<?php include '../ipsum.php'; ?>
 
 <script>
 <?php

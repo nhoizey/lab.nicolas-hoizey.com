@@ -11,7 +11,7 @@
 <h1>Fonts perf tests</h1>
 <?php include '../menu.php'; ?>
 <h2>Plain old CSS</h2>
-<?php include '../starem-warsum.php'; ?>
+<?php include '../ipsum.php'; ?>
 </body>
 
 </html>

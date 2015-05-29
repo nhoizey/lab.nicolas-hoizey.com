@@ -16,7 +16,7 @@ include './styles.css';
 <?php include '../menu.php'; ?>
 <h2>Flash of Faux Text</h2>
 <p>As defined in Zach Letherman's <a href="http://www.zachleat.com/web/foft/">Flash of Faux Text—still more on Font Loading</a> article.</p>
-<?php include '../starem-warsum.php'; ?>
+<?php include '../ipsum.php'; ?>
 
 <script>
 <?php

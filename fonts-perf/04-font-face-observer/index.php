@@ -16,7 +16,7 @@ include './styles.css';
 <?php include '../menu.php'; ?>
 <h2>Font Face Observer</h2>
 <p>As defined in Filament Group's <a href="http://www.filamentgroup.com/lab/font-events.html">Font Loading Revisited with Font Events</a> article.</p>
-<?php include '../starem-warsum.php'; ?>
+<?php include '../ipsum.php'; ?>
 
 <script>
 /* Load fonts */
