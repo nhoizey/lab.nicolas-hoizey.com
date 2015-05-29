@@ -50,13 +50,13 @@ include '../javascript/fontfaceonload.js';
 
 			/* load font (woff) */
 			var ua = navigator.userAgent,
-					fontFileUrl = "../fonts/woff/base64-variants.css.php";
+					fontFileUrl = "../fonts/woff/variants-woff-base64.css.php";
 			if( supportsWoff2 ) {
-			  fontFileUrl = "../fonts/woff2/base64-variants.css.php";
+			  fontFileUrl = "../fonts/woff2/variants-woff2-base64.css.php";
 				/* sometimes you have to do the bad thing.  ¯\_(ツ)_/¯
 				/* ttf if non-chrome android webkit browser */
 			} else if( ua.indexOf( "Android" ) > -1 && ua.indexOf( "like Gecko" ) > -1 && ua.indexOf( "Chrome" ) === -1 ) {
-			  fontFileUrl = "../fonts/ttf/fontface-variants.css.php";
+			  fontFileUrl = "../fonts/ttf/variants-ttf-fontface.css.php";
 			}
 			loadCSS(fontFileUrl);
 	  }
