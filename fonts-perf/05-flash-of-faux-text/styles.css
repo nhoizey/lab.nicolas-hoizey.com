@@ -41,7 +41,7 @@
 body {
   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   font-weight: 300;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 h1, h2, strong {
@@ -50,6 +50,11 @@ h1, h2, strong {
 
 .fonts-loaded body {
   font-family: "Source Sans Pro Normal", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-size: 1em;
+}
+
+.more-fonts-loaded {
+  font-size: 1em;
 }
 
 .more-fonts-loaded em {
@@ -64,6 +69,7 @@ h1, h2, strong {
   font-family: "Source Sans Pro Bold Italic", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 }
 
-.fallback, .fallback * {
+.fallback {
   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif !important;
+  font-size: 1.5em;
 }
