@@ -6,7 +6,7 @@
 <title>Fonts perf tests - Flash of Faux Text Enhanced</title>
 <style>
 <?php
-include './styles.css.php';
+include './styles.css';
 ?>
 </style>
 </head>

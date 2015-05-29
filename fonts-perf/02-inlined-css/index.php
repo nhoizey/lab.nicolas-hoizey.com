@@ -6,7 +6,7 @@
 <title>Fonts perf tests - Inlined CSS</title>
 <style>
 <?php
-include './styles.css.php';
+include './styles.css';
 ?>
 </style>
 </head>

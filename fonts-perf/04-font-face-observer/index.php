@@ -6,7 +6,7 @@
 <title>Fonts perf tests - Font Face Observer</title>
 <style>
 <?php
-include './styles.css.php';
+include './styles.css';
 ?>
 </style>
 </head>
