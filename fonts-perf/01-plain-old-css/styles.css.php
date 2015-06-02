@@ -45,7 +45,6 @@ header('Content-type: text/css');
 body {
   font-family: "Source Sans Pro", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   font-weight: 300;
-  font-size: 1em;
 }
 
 h1, h2, strong {
@@ -54,5 +53,4 @@ h1, h2, strong {
 
 .fallback {
   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-  font-size: 1.5em;
 }
