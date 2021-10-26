@@ -1,26 +1,72 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Issue with addEventListener on SVG animation in Chrome &amp; Safari
+    </title>
+  </head>
 
-<head>
-<meta charset="utf-8">
-<title>Issue with addEventListener on SVG animation in Chrome &amp; Safari</title>
-</head>
+  <body>
+    <svg
+      version="1.1"
+      baseProfile="basic"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      id="board"
+      viewBox="0 0 200 200"
+      width="200"
+      height="200"
+    >
+      <polygon
+        id="square"
+        points="20,20 20,60 60,60 60,20"
+        style="stroke-width: 0; fill: #000"
+      >
+        <animateTransform
+          id="anim"
+          attributeType="xml"
+          attributeName="transform"
+          type="rotate"
+          from="0 60 60"
+          to="360 60 60"
+          begin="2s"
+          dur="2s"
+        />
+      </polygon>
+    </svg>
+    <script>
+      anim = document.getElementById("anim");
+      anim.addEventListener(
+        "endEvent",
+        function (event) {
+          p = document.createElement("p");
+          t = document.createTextNode("It works!");
+          p.appendChild(t);
+          document.body.appendChild(p);
+        },
+        false
+      );
+    </script>
 
-<body>
-<svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="board" viewBox="0 0 200 200" width="200" height="200">
-  <polygon id="square" points="20,20 20,60 60,60 60,20" style="stroke-width: 0; fill: #000;">
-    <animateTransform id="anim" attributeType="xml" attributeName="transform" type="rotate" from="0 60 60" to="360 60 60" begin="2s" dur="2s" />
-  </polygon>
-</svg>
-<script>
-anim = document.getElementById('anim');
-anim.addEventListener('endEvent', function(event) {
-    p = document.createElement('p');
-    t = document.createTextNode('It works!');
-    p.appendChild(t);
-    document.body.appendChild(p);
-  }, false);
-</script>
-</body>
-
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//data.nicolas-hoizey.com/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "7"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </body>
 </html>

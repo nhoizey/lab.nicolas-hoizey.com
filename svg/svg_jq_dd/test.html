@@ -1,103 +1,138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Issue with vertical drap&amp;drop in Firefox on an SVG / jQuery element</title>
-<style>
-html, body {
-  color:  #000;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-</style>
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  
-  var dragged = false,
-      cursorY = 0;
-  
-  function xToSvg(x) {
-    return (x - 1) * 32;
-  }
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Issue with vertical drap&amp;drop in Firefox on an SVG / jQuery element
+    </title>
+    <style>
+      html,
+      body {
+        color: #000;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+    </style>
+    <script src="/shared/jquery-3.6.0.slim.min.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        var dragged = false,
+          cursorY = 0;
 
-  function yToSvg(y) {
-    return 480 - 32 * y;
-  }
-  
-  function svgToY(coordY) {
-    return (480 - coordY) / 32;
-  }
-  
-  function pixelsToSvgY(coordY) {
-    return coordY * 480 / $(document).height();
-  }
+        function xToSvg(x) {
+          return (x - 1) * 32;
+        }
 
-  function drawPiece(x, y, pieceType, pieceId) {
-    var piece = $(document.createElementNS("http://www.w3.org/2000/svg","use"))
-      .attr({
-        x: x,
-        y: y
+        function yToSvg(y) {
+          return 480 - 32 * y;
+        }
+
+        function svgToY(coordY) {
+          return (480 - coordY) / 32;
+        }
+
+        function pixelsToSvgY(coordY) {
+          return (coordY * 480) / $(document).height();
+        }
+
+        function drawPiece(x, y, pieceType, pieceId) {
+          var piece = $(
+            document.createElementNS("http://www.w3.org/2000/svg", "use")
+          ).attr({
+            x: x,
+            y: y,
+          });
+          if (pieceId != undefined) {
+            piece.attr({ id: pieceId });
+          }
+          piece
+            .get(0)
+            .setAttributeNS(
+              "http://www.w3.org/1999/xlink",
+              "href",
+              "#" + pieceType
+            );
+          $("#board").append(piece);
+          return piece;
+        }
+
+        drawnCurrentPiece = drawPiece(
+          xToSvg(8),
+          yToSvg(8),
+          "piece1",
+          "playable"
+        );
+
+        $("#board").on("mousemove", function (event) {
+          event.preventDefault();
+          if (dragged) {
+            cursorY = pixelsToSvgY(event.pageY) - 16;
+            drawnCurrentPiece.attr({ y: cursorY });
+          }
+        });
+        $("#board").on("mouseup", function (event) {
+          event.preventDefault();
+          if (dragged) {
+            dragged = false;
+            cursorY = Math.round((pixelsToSvgY(event.pageY) - 16) / 32) * 32;
+            drawnCurrentPiece.attr({ y: cursorY });
+            console.log("# Dropped here: " + svgToY(cursorY));
+          }
+        });
+        drawnCurrentPiece.on("mousedown", function (event) {
+          event.preventDefault();
+          dragged = true;
+          cursorY = pixelsToSvgY(event.pageY) - 16;
+          drawnCurrentPiece.attr({ y: cursorY });
+        });
       });
-    if (pieceId != undefined) {
-      piece.attr({ id: pieceId });
-    }
-    piece.get(0).setAttributeNS("http://www.w3.org/1999/xlink","href","#" + pieceType);
-    $("#board").append(piece);
-    return piece;
-  }
-  
-  drawnCurrentPiece = drawPiece(xToSvg(8), yToSvg(8), 'piece1', 'playable');
+    </script>
+  </head>
 
-  $("#board").on('mousemove', function(event) {
-    event.preventDefault();
-    if (dragged) {
-      cursorY = pixelsToSvgY(event.pageY) - 16;
-      drawnCurrentPiece.attr({ y: cursorY });
-    }
-  });
-  $("#board").on('mouseup', function(event) {
-    event.preventDefault();
-    if (dragged) {
-      dragged = false;
-      cursorY = Math.round((pixelsToSvgY(event.pageY) - 16) / 32) * 32;
-      drawnCurrentPiece.attr({ y: cursorY });
-      console.log('# Dropped here: ' + svgToY(cursorY));
-    }
-  });
-  drawnCurrentPiece.on('mousedown', function(event) {
-    event.preventDefault();
-    dragged = true;
-    cursorY = pixelsToSvgY(event.pageY) - 16;
-    drawnCurrentPiece.attr({ y: cursorY });
-  });
-});
-</script>
-</head>
+  <body>
+    <svg
+      version="1.1"
+      baseProfile="basic"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      id="board"
+      viewBox="0 0 320 480"
+      width="100%"
+      height="100%"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <defs>
+        <symbol id="piece1">
+          <image xlink:href="m1.svg" width="32" height="32" />
+        </symbol>
+      </defs>
+      <text x="10" y="20">
+        Issue with vertical drap&amp;drop in Firefox on an SVG / jQuery element
+      </text>
+    </svg>
 
-<body>
-<svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="board" viewBox="0 0 320 480" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-  <defs>
-    <symbol id="piece1"><image xlink:href="m1.svg" width="32" height="32" /></symbol>
-  </defs>
-  <text x="10" y="20">Issue with vertical drap&amp;drop in Firefox on an SVG / jQuery element</text>
-</svg>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-29037045-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</body>
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//data.nicolas-hoizey.com/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "7"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </body>
 </html>

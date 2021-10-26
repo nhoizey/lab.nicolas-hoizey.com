@@ -1,42 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>&lt;use&gt; of an &lt;image&gt;</title>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;use&gt; of an &lt;image&gt;</title>
+  </head>
 
-<body>
-  <svg version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="board" viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-    <defs>
-      <image id="piece1" xlink:href="m1.svg" width="32" height="32" />
-      <image id="piece2" xlink:href="m2.svg" width="32" height="32" />
-      <image id="piece3" xlink:href="m3.svg" width="32" height="32" />
-    </defs>
+  <body>
+    <svg
+      version="1.1"
+      baseProfile="basic"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      id="board"
+      viewBox="0 0 100 100"
+      width="100%"
+      height="100%"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <defs>
+        <image id="piece1" xlink:href="m1.svg" width="32" height="32" />
+        <image id="piece2" xlink:href="m2.svg" width="32" height="32" />
+        <image id="piece3" xlink:href="m3.svg" width="32" height="32" />
+      </defs>
 
-    <g id="main">
-      <use xlink:href="#piece1" x="0" y="0" />
-      <use xlink:href="#piece2" x="32" y="0" />
-      <use xlink:href="#piece3" x="64" y="0" />
-      <use xlink:href="#piece2" x="0" y="32" />
-      <use xlink:href="#piece3" x="32" y="32" />
-      <use xlink:href="#piece1" x="64" y="32" />
-      <use xlink:href="#piece3" x="0" y="64" />
-      <use xlink:href="#piece1" x="32" y="64" />
-      <use xlink:href="#piece2" x="64" y="64" />
-    </g>
-  </svg>
-<script type="text/javascript">
+      <g id="main">
+        <use xlink:href="#piece1" x="0" y="0" />
+        <use xlink:href="#piece2" x="32" y="0" />
+        <use xlink:href="#piece3" x="64" y="0" />
+        <use xlink:href="#piece2" x="0" y="32" />
+        <use xlink:href="#piece3" x="32" y="32" />
+        <use xlink:href="#piece1" x="64" y="32" />
+        <use xlink:href="#piece3" x="0" y="64" />
+        <use xlink:href="#piece1" x="32" y="64" />
+        <use xlink:href="#piece2" x="64" y="64" />
+      </g>
+    </svg>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-29037045-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</body>
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//data.nicolas-hoizey.com/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "7"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </body>
 </html>

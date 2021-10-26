@@ -1,101 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Root font size test</title>
-<meta name="viewport" content="initial-scale=1.0" />
-<link rel="stylesheet" href="styles.css" />
-<script src="js/vendor/prefixfree.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Root font size test</title>
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Root font size test</h1>
+    </header>
 
-<header>
-	<h1>Root font size test</h1>
-</header>
+    <output>
+      <p>Your current root font size is</p>
+      <p id="result">
+        <span><img src="img/loading.gif" width="48" height="48" /> </span
+        ><wbr />px
+      </p>
+    </output>
 
-<output>
-	<p>Your current root font size is</p>
-	<p id="result"><span><img src="img/loading.gif" width="48" height="48" /> </span><wbr />px</p>
-</output>
+    <p id="feedback"></p>
 
-<p id="feedback"></p>
+    <footer>
+      Handmade by
+      <a href="http://gasteroprod.com/">Nicolas Hoizey</a>,<br />inspired by
+      <a href="http://timkadlec.com/">Tim Kadlec</a>'s
+      <a href="http://timkadlec.com/ex/fontsize.html">Font Size Test</a> &amp;
+      <a href="http://lea.verou.me">Lea Verou</a>'s
+      <a href="http://dpi.lv/">DPI love</a>
+    </footer>
 
-<script src="http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnINCxIEVGVzdBj1uvsUDA?o=js"></script>
-<!--
-Parameters:
-  v=top: Shows the "Top Browsers" list. (DEFAULT)
-  v=top-d: Shows the "Top Desktop Browsers" list.
-  v=top-d-e: Shows the "Top Desktop Edge Browsers" list.
-  v=top-m: Shows the "Top Mobile Browsers" list.
-  v=0: Shows the browser families.
-  v=1: Shows the major browser versions.
-  v=2: Shows the minor browser versions.
-  v=3: Shows all browser versions.
-  o=html: The browserscope HTML table (DEFAULT, good for iframe src)
-  o=js: Good as a script src value, renders the results table in your page.
-  o=json: A JSON encoded response with the tabular median data.
-  w=#: Sets the width of the results table (in px).
-  h=#: Sets the height of the results table (in px).
-  f=test_key_1,test_key_2: Limit result columns to only these test_keys.
-  highlight=1: Colors your cells green to red based on detected min/max values.
-  callback=yourFnName: When o=json, wraps json output in "yourFnName()".
-      When o=js or o=html it will pass a param which is a class on which
-      you can call 1 method named "load" to refresh the resultstable.
-      For instance, if you had &callback=myCallback:
-        var myBrowserscopeTable;
-        var myCallback = function(browserscopeTable) {
-          myBrowserscopeTable = browserscopeTable;
-        }
-        var reloadTable = function() {
-          myBrowserscopeTable(); // would refresh the data table.
-        }
--->
+    <script src="/shared/jquery-3.6.0.slim.min.js"></script>
+    <script>
+      var rfs = 0;
+      function showResult() {
+        rfs =
+          Math.round((parseInt($("#result").css("font-size"), 10) / 4) * 100) /
+          100;
+        $("#result span").text(rfs);
+      }
+      showResult();
+      window.setInterval(showResult, 100);
+    </script>
 
-<footer>Handmade by <a href="http://gasteroprod.com/">Nicolas Hoizey</a>,<br />inspired by <a href="http://timkadlec.com/">Tim Kadlec</a>'s <a href="http://timkadlec.com/ex/fontsize.html">Font Size Test</a> &amp; <a href="http://lea.verou.me">Lea Verou</a>'s <a href="http://dpi.lv/">DPI love</a></footer>
-
-<script src="js/vendor/jquery-1.10.2.js"></script>
-<script>
-var rfs = 0;
-function showResult () {
-	// rfs = Math.round(parseInt(window.getComputedStyle(document.querySelector('#result'), null).getPropertyValue('font-size'), 10) / 4 * 100) / 100;
-  rfs = Math.round(parseInt($('#result').css('font-size'), 10) / 4 * 100) / 100;
-  $('#result span').text(rfs);
-}
-showResult();
-window.setInterval(showResult, 100);
-
-function sentToBrowserScope() {
-  $('#feedback').addClass('ok').text('Value sent to BrowserScope, thanks!');
-}
-
-// To save data in Browserscope do something like the following.
-// The syntax is 'test_key': 'value' where test_key is some unique
-// identifier for a piece of data you want to store (no = or , allowed)
-// and value is a numeric value from 0 through 1000000000000.
-// Note: You can only send a maximum of 200 results in a beacon.
-var _bTestResults = {
-  'root_font_size': rfs
-};
-
-// Beacon the results to Browserscope.
-(function(document) {
-  var testKey = 'agt1YS1wcm9maWxlcnINCxIEVGVzdBj1uvsUDA';
-  var newScript = document.createElement('script'),
-      firstScript = document.getElementsByTagName('script')[0];
-  newScript.src = 'http://www.browserscope.org/user/beacon/' + testKey;
-  newScript.src += '?callback=sentToBrowserScope';
-  firstScript.parentNode.insertBefore(newScript, firstScript);
-}(document));
-
-// Google Univeral Analytics
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-1655999-7', 'gasteroprod.com');
-ga('send', 'pageview');
-</script>
-
-</body>
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//data.nicolas-hoizey.com/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "7"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </body>
 </html>
