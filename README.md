@@ -1,4 +1,3 @@
-lab.gasteroprod.com
-===================
+# lab.nicolas-hoizey.com
 
-lab.gasteroprod.com
+Nicolas Hoizey's experimentations lab
