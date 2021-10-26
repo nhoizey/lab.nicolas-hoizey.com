@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Progressively enhanced infinite scrolling masonry</title>
-	<script src="/shared/jquery-3.6.0.slim.min.js"></script>
+	<script src="/shared/jquery-3.6.0.min.js"></script>
 	<script src="js/vendor/masonry.pkgd.min.js"></script>
 	<style>
 	body {
