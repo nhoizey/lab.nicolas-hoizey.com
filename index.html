@@ -1,64 +1,58 @@
 <html lang="fr">
-<head>
-	<meta charset="utf-8" />
-	<title>Gastero Prod. Lab</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="http://gasteroprod.com/plugins/perso/gasteroprod.com/css/gasteroprod.css" />
-	<style>
-	h1 {
-		position: relative;
-	}
+  <head>
+    <meta charset="utf-8" />
+    <title>Nicolas Hoizey's Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="page">
+      <header id="header">
+        <h1 id="logo">Nicolas Hoizey's Lab</h1>
+      </header>
+      <div id="content">
+        <p>
+          Welcome to my « Lab », a place for my experiments and demonstrations.
+        </p>
+        <h2>Root Font Size</h2>
+        <p>A tool that helps now what your current root font size is:</p>
+        <p><a href="./rfs/">https://lab.nicolas-hoizey.com/rfs/</a></p>
+        <h2>Experiments with size units and Media Queries</h2>
+        <p>
+          <a href="./units-and-media-queries/"
+            >https://lab.nicolas-hoizey.com/units-and-media-queries/</a
+          >
+        </p>
+      </div>
+      <footer id="footer">
+        <p class="licence">
+          Sauf mention contraire explicite, tous les contenus de ce site sont la
+          propriété de Nicolas Hoizey et sont sous licence
+          <a href="http://creativecommons.org/licenses/by-sa/3.0/fr/"
+            >CC BY-SA 3.0</a
+          >.
+        </p>
+      </footer>
+    </div>
 
-	h1 span {
-		display: inline-block;
-
-		position: absolute;
-		bottom: 0;
-		right: 0;
-
-		font-size: 2em;
-		font-weight: bold;
-		text-decoration: none;
-		color: #f03;
-		text-shadow: rgba(0, 0, 0, .5) 1px 1px 5px;
-
-		  -webkit-transform: rotate(-10deg); 
-		     -moz-transform: rotate(-10deg); 
-		      -ms-transform: rotate(-10deg); 
-		       -o-transform: rotate(-10deg); 
-		          transform: rotate(-10deg); 
-	}
-	</style>
-	<link rel="icon" type="image/png" href="http://static.gasteroprod.com/plugins/perso/gasteroprod.com/img/gastero-prod-favicon.png" />
-	<link rel="apple-touch-icon" href="http://static.gasteroprod.com/plugins/perso/gasteroprod.com/img/apple-touch-icon-144.png" />
-</head>
-<body>
-	<div id="page">
-		<header id="header">
-			<h1 id="logo"><a href="http://lab.gasteroprod.com/"><img src="http://static.gasteroprod.com/plugins/perso/gasteroprod.com/img/gastero-prod-logo.svg" width="100%" alt="Gastero Prod." /> <span>Lab</span></a></h1>
-		</header>
-		<div id="content">
-			<p>Welcome to the « Lab » of <a href="http://gasteroprod.com/">Gastero Prod.</a>, a place for Nicolas Hoizey's experiments and demonstrations.</p>
-			<h2>Root Font Size</h2>
-			<p>A tool that helps now what your current root font size is:</p>
-			<p><a href="./rfs/">http://lab.gasteroprod.com/rfs/</a></p>
-			<h2>Experiments with size units and Media Queries</h2>
-			<p><a href="./units-and-media-queries/">http://lab.gasteroprod.com/units-and-media-queries/</a></p>
-		</div>
-		<footer id="footer">
-			<p class="licence">Sauf mention contraire explicite, tous les contenus de ce site sont la propriété de Nicolas Hoizey et sont sous licence <a href="http://creativecommons.org/licenses/by-sa/3.0/fr/">CC BY-SA 3.0</a>.</p>
-		</footer>
-	</div>
-
-<script>
-// Google Univeral Analytics
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-1655999-7', 'gasteroprod.com');
-ga('send', 'pageview');
-</script>
-</body>
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//data.nicolas-hoizey.com/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "7"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </body>
 </html>
