@@ -139,7 +139,7 @@ dummy.parentNode.removeChild(dummy);
 	<div class="box rem">This box has a width of <span class="small"><?php echo $smallBoxSizes['rem']; ?></span><span class="large"><?php echo $largeBoxSizes['rem']; ?></span></div>
 	<div class="box px">This box has a width of <span class="small"><?php echo $smallBoxSizes['px']; ?></span><span class="large"><?php echo $largeBoxSizes['px']; ?></span></div>
 
-	<?php inclure('../analytics.php'); ?>
+	<?php include('../analytics.php'); ?>
 </body>
 
 </html>
