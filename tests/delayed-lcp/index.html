@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>Delayed LCP test</title>
     <meta name="viewport" content="initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
     <style>
       section {
         position: relative;
@@ -35,7 +34,7 @@
       function sleep(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
-      sleep(2000).then(() => {
+      sleep(3000).then(() => {
         let img = document.querySelector("[data-src]");
         img.setAttribute("src", img.dataset.src);
       });
