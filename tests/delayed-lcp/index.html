@@ -8,6 +8,9 @@
       section {
         position: relative;
       }
+      section.hide {
+        visibility: hidden;
+      }
       img {
         position: absolute;
       }
@@ -17,7 +20,7 @@
     <header>
       <h1>Delayed LCP test</h1>
     </header>
-    <section>
+    <section class="hide">
       <img src="https://picsum.photos/id/20/1200/800" alt="" />
       <img data-src="https://picsum.photos/id/20/1200/800" alt="" />
     </section>
@@ -37,6 +40,9 @@
       sleep(3000).then(() => {
         let img = document.querySelector("[data-src]");
         img.setAttribute("src", img.dataset.src);
+
+        let section = document.querySelector("section");
+        section.classList.remove("hide");
       });
     </script>
   </body>
