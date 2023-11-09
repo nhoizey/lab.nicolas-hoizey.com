@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Delayed LCP test</title>
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      section {
+        position: relative;
+      }
+      img {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Delayed LCP test</h1>
+    </header>
+    <section>
+      <img src="https://picsum.photos/id/20/1200/800" alt="" />
+      <img data-src="https://picsum.photos/id/20/1200/800" alt="" />
+    </section>
+
+    <script>
+      // https://web.dev/articles/lcp?hl=en#measure_lcp_in_javascript
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          console.log("LCP candidate:", entry.startTime, entry);
+        }
+      }).observe({ type: "largest-contentful-paint", buffered: true });
+
+      // Delay loading/rendering of the image
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      sleep(2000).then(() => {
+        let img = document.querySelector("[data-src]");
+        img.setAttribute("src", img.dataset.src);
+      });
+    </script>
+  </body>
+</html>
