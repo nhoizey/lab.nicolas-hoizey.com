@@ -21,17 +21,8 @@
       <h1>Delayed LCP test</h1>
     </header>
     <section>
-      <img
-        srcset="
-          https://picsum.photos/id/20/1200/800  1x,
-          https://picsum.photos/id/20/2400/1600 2x
-        "
-      />
-      <img
-        data-srcset="https://picsum.photos/id/20/1200/800 1x,
-      https://picsum.photos/id/20/2400/1600 2x,
-      https://picsum.photos/id/20/12000/8000 10x"
-      />
+      <img src="https://picsum.photos/id/20/1200/800" />
+      <img data-src="https://picsum.photos/id/20/1200/800" />
     </section>
 
     <script>
@@ -47,8 +38,8 @@
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
       sleep(3000).then(() => {
-        let img = document.querySelector("[data-srcset]");
-        img.setAttribute("srcset", img.dataset.srcset);
+        let img = document.querySelector("[data-src]");
+        img.setAttribute("src", img.dataset.src);
       });
     </script>
   </body>
